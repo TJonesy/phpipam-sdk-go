@@ -30,7 +30,7 @@ type Subnet struct {
 	SectionID int `json:"sectionId,string,omitempty"`
 
 	// The ID of a linked IPv6 subnet.
-	LinkedSubnet int `json:"linked_subnet,omitempty"`
+	LinkedSubnet int `json:"linked_subnet,string,omitempty"`
 
 	// The ID of the VLAN that this subnet belongs to.
 	VLANID int `json:"vlanId,string,omitempty"`
@@ -86,7 +86,7 @@ type Subnet struct {
 	Threshold int `json:"threshold,string,omitempty"`
 
 	// The location index of the subnet.
-	Location int `json:"location,omitempty"`
+	Location int `json:"location,string,omitempty"`
 
 	// The date of the last edit to this resource.
 	EditDate string `json:"editDate,omitempty"`
