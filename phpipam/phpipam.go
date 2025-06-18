@@ -3,6 +3,7 @@
 package phpipam
 
 import (
+	"bytes"
 	"encoding/json"
 	"os"
 	"reflect"
@@ -15,19 +16,18 @@ const defaultAPIAddress = "http://localhost/api"
 
 // Config contains the configuration for connecting to the PHPIPAM API.
 //
-//
-// Supplying Configuration to Controllers
+// # Supplying Configuration to Controllers
 //
 // All controller constructors (ie: VLANs, subnets, addresses, etc) take zero or
 // more of these structs as configuration, like so:
 //
-//   cfg := phpipam.Config{
-//     Username:     "jdoe",
-//     Password:     "password",
-//     AppID:        "appid",
-//   }
-//   sess := session.New(cfg)
-//   ctlr := ipaddr.New(sess)
+//	cfg := phpipam.Config{
+//	  Username:     "jdoe",
+//	  Password:     "password",
+//	  AppID:        "appid",
+//	}
+//	sess := session.New(cfg)
+//	ctlr := ipaddr.New(sess)
 //
 // Note that default options are set for EmailAddress, Password, and AppKey.
 // See the DefaultConfigProvider method for more details.
@@ -38,6 +38,9 @@ type Config struct {
 
 	// The API endpoint.
 	Endpoint string
+
+	// Use static api token for auth
+	Token string
 
 	// The password for the PHPIPAM account.
 	Password string
@@ -50,10 +53,11 @@ type Config struct {
 }
 
 // DefaultConfigProvider supplies a default configuration:
-//  * AppID defaults to PHPIPAM_APP_ID, if set, otherwise empty
-//  * Endpoint defaults to PHPIPAM_ENDPOINT_ADDR, otherwise http://localhost/api
-//  * Password defaults to PHPIPAM_PASSWORD, if set, otherwise empty
-//  * Username defaults to PHPIPAM_USER_NAME, if set, otherwise empty
+//   - AppID defaults to PHPIPAM_APP_ID, if set, otherwise empty
+//   - Endpoint defaults to PHPIPAM_ENDPOINT_ADDR, otherwise http://localhost/api
+//   - Password defaults to PHPIPAM_PASSWORD, if set, otherwise empty
+//   - Username defaults to PHPIPAM_USER_NAME, if set, otherwise empty
+//   - Token defaults to PHPIPAM_TOKEN, if set, otherwise empty
 //
 // This essentially loads an initial config state for any given
 // API service.
@@ -74,6 +78,8 @@ func DefaultConfigProvider() Config {
 			cfg.Password = d[1]
 		case "PHPIPAM_USER_NAME":
 			cfg.Username = d[1]
+		case "PHPIPAM_TOKEN":
+			cfg.Token = d[1]
 		}
 	}
 	return cfg
@@ -89,34 +95,33 @@ type BoolIntString bool
 
 // MarshalJSON implements json.Marshaler for the BoolIntString type.
 func (bis BoolIntString) MarshalJSON() ([]byte, error) {
-	var s string
+	var i int
 	switch bis {
 	case false:
-		s = "0"
+		i = 0
 	case true:
-		s = "1"
+		i = 1
 	}
-	return json.Marshal(s)
+	return json.Marshal(i)
 }
 
 // UnmarshalJSON implements json.Unmarshaler for the BoolIntString type.
 func (bis *BoolIntString) UnmarshalJSON(b []byte) error {
-	var s string
-	if err := json.Unmarshal(b, &s); err != nil {
-		return err
-	}
-	switch s {
-	case "0", "":
+	if b == nil || string(b) == "null" {
 		*bis = false
-	case "1":
-		*bis = true
-	default:
+		return nil
+	}
+	if b[0] == '"' && b[len(b)-1] == '"' {
+		b = bytes.Trim(b, `"`)
+	}
+	val, err := strconv.ParseBool(string(b))
+	if err != nil {
 		return &json.UnmarshalTypeError{
 			Value: "bool",
-			Type:  reflect.ValueOf(s).Type(),
+			Type:  reflect.ValueOf(bis).Type(),
 		}
 	}
-
+	*bis = BoolIntString(val)
 	return nil
 }
 

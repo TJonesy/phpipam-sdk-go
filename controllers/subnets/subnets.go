@@ -5,16 +5,17 @@ package subnets
 import (
 	"fmt"
 
-	"github.com/pavel-z1/phpipam-sdk-go/controllers/addresses"
-	"github.com/pavel-z1/phpipam-sdk-go/phpipam"
-	"github.com/pavel-z1/phpipam-sdk-go/phpipam/client"
-	"github.com/pavel-z1/phpipam-sdk-go/phpipam/session"
+	"github.com/tjonesy/phpipam-sdk-go/controllers/addresses"
+	"github.com/tjonesy/phpipam-sdk-go/controllers/nameservers"
+	"github.com/tjonesy/phpipam-sdk-go/phpipam"
+	"github.com/tjonesy/phpipam-sdk-go/phpipam/client"
+	"github.com/tjonesy/phpipam-sdk-go/phpipam/session"
 )
 
 // Subnet represents a PHPIPAM subnet.
 type Subnet struct {
 	// The subnet ID.
-	ID int `json:"id,string,omitempty"`
+	ID int `json:"id,omitempty"`
 
 	// The subnet address, in dotted quad format (i.e. A.B.C.D).
 	SubnetAddress string `json:"subnet,omitempty"`
@@ -26,25 +27,25 @@ type Subnet struct {
 	Description string `json:"description,omitempty"`
 
 	// The section ID to add the subnet to (required when adding).
-	SectionID int `json:"sectionId,string,omitempty"`
+	SectionID int `json:"sectionId,omitempty"`
 
 	// The ID of a linked IPv6 subnet.
-	LinkedSubnet int `json:"linked_subnet,string,omitempty"`
+	LinkedSubnet int `json:"linked_subnet,omitempty"`
 
 	// The ID of the VLAN that this subnet belongs to.
-	VLANID int `json:"vlanId,string,omitempty"`
+	VLANID int `json:"vlanId,omitempty"`
 
 	// The ID of the VRF this subnet belongs to.
-	VRFID int `json:"vrfId,string,omitempty"`
+	VRFID int `json:"vrfId,omitempty"`
 
 	// The parent subnet ID if this is a nested subnet.
-	MasterSubnetID int `json:"masterSubnetId,string,omitempty"`
+	MasterSubnetID int `json:"masterSubnetId,omitempty"`
 
 	// The ID of the nameserver to attache the subnet to.
-	NameserverID int `json:"nameserverId,string,omitempty"`
+	NameserverID int `json:"nameserverId,omitempty"`
 
 	// The ID and IPs of the nameservers for the subnet
-	Nameservers map[string]interface{} `json:"nameservers,omitempty"`
+	Nameservers []nameservers.Nameserver `json:"nameservers,omitempty"`
 
 	// true if the name should be displayed in listing instead of the subnet
 	// address.
@@ -64,7 +65,7 @@ type Subnet struct {
 	AllowRequests phpipam.BoolIntString `json:"allowRequests,omitempty"`
 
 	// The ID of the scan agent to use for the subnet.
-	ScanAgent int `json:"scanAgent,string,omitempty"`
+	ScanAgent int `json:"scanAgent,omitempty"`
 
 	// Controls if the subnet should be included in status checks.
 	PingSubnet phpipam.BoolIntString `json:"pingSubnet,omitempty"`
@@ -82,10 +83,10 @@ type Subnet struct {
 	IsFull phpipam.BoolIntString `json:"isFull,omitempty"`
 
 	// The threshold of the subnet.
-	Threshold int `json:"threshold,string,omitempty"`
+	Threshold int `json:"threshold,omitempty"`
 
 	// The location index of the subnet.
-	Location int `json:"location,string,omitempty"`
+	Location int `json:"location,omitempty"`
 
 	// The date of the last edit to this resource.
 	EditDate string `json:"editDate,omitempty"`
