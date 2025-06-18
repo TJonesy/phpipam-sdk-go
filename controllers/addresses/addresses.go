@@ -37,16 +37,19 @@ type Address struct {
 	Owner string `json:"owner,omitempty"`
 
 	// The tag ID for the IP address.
-	Tag int `json:"tag,omitempty"`
+	Tag int `json:"tag,string,omitempty"`
 
 	// true if PTR records should not be created for this IP address.
 	PTRIgnore phpipam.BoolIntString `json:"PTRIgnore,omitempty"`
 
 	// The ID of a PowerDNS PTR record.
-	PTRRecordID int `json:"PTR,omitempty"`
+	PTRRecordID int `json:"PTR,string,omitempty"`
 
 	// An ID of a device that this address belongs to.
 	DeviceID int `json:"deviceId,string,omitempty"`
+
+	// An ID of a location that this address belongs to.
+	LocationID int `json:"location,string,omitempty"`
 
 	// A switchport number/label that this IP address belongs to.
 	Port string `json:"port,omitempty"`
