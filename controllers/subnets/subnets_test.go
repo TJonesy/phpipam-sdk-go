@@ -56,14 +56,12 @@ var testGetSubnetByIDOutputExpected = Subnet{
 	SectionID:      1,
 	MasterSubnetID: 2,
 	ScanAgent:      0,
-	Nameservers: []nameservers.Nameserver{
-		{
-			ID:          0,
-			Name:        "mynameserver.example.com",
-			NameSrv1:    "1.2.3.4",
-			Description: "a nameserver description",
-			Permissions: "1",
-		},
+	Nameservers: nameservers.Nameserver{
+		ID:          0,
+		Name:        "mynameserver.example.com",
+		NameSrv1:    "1.2.3.4",
+		Description: "a nameserver description",
+		Permissions: "1",
 	},
 }
 
@@ -90,13 +88,13 @@ const testGetSubnetByIDOutputJSON = `
     "DNSrecursive": 0,
     "DNSrecords": 0,
     "nameserverId": "0",
-    "nameservers": [{
+    "nameservers": {
         "id": "0",
         "name": "mynameserver.example.com",
         "namesrv1": "1.2.3.4",
         "description": "a nameserver description",
         "permissions": "1"
-    }],
+    },
     "scanAgent": "0",
     "isFolder": 0,
     "isFull": 0,

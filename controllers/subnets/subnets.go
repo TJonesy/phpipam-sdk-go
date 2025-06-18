@@ -45,7 +45,7 @@ type Subnet struct {
 	NameserverID int `json:"nameserverId,string,omitempty"`
 
 	// The ID and IPs of the nameservers for the subnet
-	Nameservers []nameservers.Nameserver `json:"nameservers,omitempty"`
+	Nameservers nameservers.Nameserver `json:"nameservers,omitempty"`
 
 	// true if the name should be displayed in listing instead of the subnet
 	// address.
