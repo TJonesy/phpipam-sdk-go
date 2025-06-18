@@ -39,9 +39,6 @@ type Config struct {
 	// The API endpoint.
 	Endpoint string
 
-	// Use static api token for auth
-	Token string
-
 	// The password for the PHPIPAM account.
 	Password string
 
@@ -57,7 +54,6 @@ type Config struct {
 //   - Endpoint defaults to PHPIPAM_ENDPOINT_ADDR, otherwise http://localhost/api
 //   - Password defaults to PHPIPAM_PASSWORD, if set, otherwise empty
 //   - Username defaults to PHPIPAM_USER_NAME, if set, otherwise empty
-//   - Token defaults to PHPIPAM_TOKEN, if set, otherwise empty
 //
 // This essentially loads an initial config state for any given
 // API service.
@@ -78,8 +74,6 @@ func DefaultConfigProvider() Config {
 			cfg.Password = d[1]
 		case "PHPIPAM_USER_NAME":
 			cfg.Username = d[1]
-		case "PHPIPAM_TOKEN":
-			cfg.Token = d[1]
 		}
 	}
 	return cfg

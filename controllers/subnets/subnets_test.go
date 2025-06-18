@@ -42,7 +42,7 @@ const testCreateFirstFreeSubnetOutputJSON = `
   "code": 201,
   "success": true,
   "message": "Subnet created",
-  "id": 10,
+  "id": "10",
   "data": "10.10.4.0/25"
 }
 `
@@ -69,14 +69,14 @@ const testGetSubnetByIDOutputJSON = `
   "code": 200,
   "success": true,
   "data": {
-    "id": 8,
+    "id": "8",
     "subnet": "10.10.3.0",
     "mask": "24",
-    "sectionId": 1,
+    "sectionId": "1",
     "description": null,
     "firewallAddressObject": null,
     "vrfId": null,
-    "masterSubnetId": 2,
+    "masterSubnetId": "2",
     "allowRequests": 0,
     "vlanId": null,
     "showName": 0,
@@ -86,9 +86,9 @@ const testGetSubnetByIDOutputJSON = `
     "discoverSubnet": 0,
     "DNSrecursive": 0,
     "DNSrecords": 0,
-    "nameserverId": 0,
+    "nameserverId": "0",
     "nameservers": [{
-        "id": 0,
+        "id": "0",
         "name": "mynameserver.example.com",
         "namesrv1": "1.2.3.4",
         "description": "a nameserver description",
@@ -187,14 +187,14 @@ const testGetSubnetsByCIDROutputJSON = `
   "success": true,
   "data": [
     {
-      "id": 8,
+      "id": "8",
       "subnet": "10.10.3.0",
       "mask": "24",
-      "sectionId": 1,
+      "sectionId": "1",
       "description": null,
       "firewallAddressObject": null,
       "vrfId": null,
-      "masterSubnetId": 2,
+      "masterSubnetId": "2",
       "allowRequests": 0,
       "vlanId": null,
       "showName": 0,
@@ -204,7 +204,7 @@ const testGetSubnetsByCIDROutputJSON = `
       "discoverSubnet": 0,
       "DNSrecursive": 0,
       "DNSrecords": 0,
-      "nameserverId": 0,
+      "nameserverId": "0",
       "scanAgent": null,
       "isFolder": 0,
       "isFull": 0,
@@ -297,8 +297,8 @@ const testGetAddressesInSubnetJSON = `
   "success": true,
   "data": [
     {
-      "id": 1,
-      "subnetId": 3,
+      "id": "1",
+      "subnetId": "3",
       "ip": "10.10.1.3",
       "is_gateway": 0,
       "description": "Server1",
@@ -323,8 +323,8 @@ const testGetAddressesInSubnetJSON = `
       ]
     },
     {
-      "id": 2,
-      "subnetId": 3,
+      "id": "2",
+      "subnetId": "3",
       "ip": "10.10.1.4",
       "is_gateway": 0,
       "description": "Server2",
@@ -349,8 +349,8 @@ const testGetAddressesInSubnetJSON = `
       ]
     },
     {
-      "id": 3,
-      "subnetId": 3,
+      "id": "3",
+      "subnetId": "3",
       "ip": "10.10.1.5",
       "is_gateway": 0,
       "description": "Server3",
@@ -375,8 +375,8 @@ const testGetAddressesInSubnetJSON = `
       ]
     },
     {
-      "id": 4,
-      "subnetId": 3,
+      "id": "4",
+      "subnetId": "3",
       "ip": "10.10.1.6",
       "is_gateway": 0,
       "description": "Server4",
@@ -401,8 +401,8 @@ const testGetAddressesInSubnetJSON = `
       ]
     },
     {
-      "id": 5,
-      "subnetId": 3,
+      "id": "5",
+      "subnetId": "3",
       "ip": "10.10.1.245",
       "is_gateway": 0,
       "description": "Gateway",

@@ -177,7 +177,7 @@ const testCustomFieldsSchemaResponseText = `
 `
 
 var testCustomFieldsSchemaExpected = map[string]phpipam.CustomField{
-	"Projects": phpipam.CustomField{
+	"Projects": {
 		Name:    "Projects",
 		Type:    "varchar(255)",
 		Comment: "Projects assigned to subnet",

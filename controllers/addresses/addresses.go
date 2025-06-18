@@ -13,10 +13,10 @@ import (
 // Address represents an IP address resource within PHPIPAM.
 type Address struct {
 	// The ID of the IP address entry within PHPIPAM.
-	ID int `json:"id,omitempty"`
+	ID int `json:"id,string,omitempty"`
 
 	// The ID of the subnet that the address belongs to.
-	SubnetID int `json:"subnetId,omitempty"`
+	SubnetID int `json:"subnetId,string,omitempty"`
 
 	// The IP address, without a CIDR subnet mask.
 	IPAddress string `json:"ip,omitempty"`
@@ -46,7 +46,7 @@ type Address struct {
 	PTRRecordID int `json:"PTR,omitempty"`
 
 	// An ID of a device that this address belongs to.
-	DeviceID int `json:"deviceId,omitempty"`
+	DeviceID int `json:"deviceId,string,omitempty"`
 
 	// A switchport number/label that this IP address belongs to.
 	Port string `json:"port,omitempty"`

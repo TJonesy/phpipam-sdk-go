@@ -32,7 +32,6 @@ func setPHPIPAMenv() {
 	os.Setenv("PHPIPAM_ENDPOINT_ADDR", "https://example.com/phpipam/api")
 	os.Setenv("PHPIPAM_PASSWORD", "abcdefgh0123456789")
 	os.Setenv("PHPIPAM_USER_NAME", "nobody")
-	os.Setenv("PHPIPAM_TOKEN", "supersecrettoken")
 }
 
 func unsetPHPIPAMenv() {
@@ -40,7 +39,6 @@ func unsetPHPIPAMenv() {
 	os.Unsetenv("PHPIPAM_ENDPOINT_ADDR")
 	os.Unsetenv("PHPIPAM_PASSWORD")
 	os.Unsetenv("PHPIPAM_USER_NAME")
-	os.Unsetenv("PHPIPAM_TOKEN")
 }
 
 func TestPHPIPAMDefaultConfigProviderWithEnv(t *testing.T) {
@@ -57,9 +55,6 @@ func TestPHPIPAMDefaultConfigProviderWithEnv(t *testing.T) {
 	}
 	if c.AppID != "foobar" {
 		t.Fatalf("Expected AppID to be foobar, got %s", c.AppID)
-	}
-	if c.Token != "supersecrettoken" {
-		t.Fatalf("Expected Token to be supersecrettoken, got %s", c.AppID)
 	}
 }
 

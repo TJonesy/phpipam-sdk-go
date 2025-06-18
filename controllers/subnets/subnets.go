@@ -15,7 +15,7 @@ import (
 // Subnet represents a PHPIPAM subnet.
 type Subnet struct {
 	// The subnet ID.
-	ID int `json:"id,omitempty"`
+	ID int `json:"id,string,omitempty"`
 
 	// The subnet address, in dotted quad format (i.e. A.B.C.D).
 	SubnetAddress string `json:"subnet,omitempty"`
@@ -27,22 +27,22 @@ type Subnet struct {
 	Description string `json:"description,omitempty"`
 
 	// The section ID to add the subnet to (required when adding).
-	SectionID int `json:"sectionId,omitempty"`
+	SectionID int `json:"sectionId,string,omitempty"`
 
 	// The ID of a linked IPv6 subnet.
 	LinkedSubnet int `json:"linked_subnet,omitempty"`
 
 	// The ID of the VLAN that this subnet belongs to.
-	VLANID int `json:"vlanId,omitempty"`
+	VLANID int `json:"vlanId,string,omitempty"`
 
 	// The ID of the VRF this subnet belongs to.
-	VRFID int `json:"vrfId,omitempty"`
+	VRFID int `json:"vrfId,string,omitempty"`
 
 	// The parent subnet ID if this is a nested subnet.
-	MasterSubnetID int `json:"masterSubnetId,omitempty"`
+	MasterSubnetID int `json:"masterSubnetId,string,omitempty"`
 
 	// The ID of the nameserver to attache the subnet to.
-	NameserverID int `json:"nameserverId,omitempty"`
+	NameserverID int `json:"nameserverId,string,omitempty"`
 
 	// The ID and IPs of the nameservers for the subnet
 	Nameservers []nameservers.Nameserver `json:"nameservers,omitempty"`

@@ -14,7 +14,7 @@ import (
 // Section represents a PHPIPAM section.
 type Section struct {
 	// The section ID.
-	ID int `json:"id,omitempty"`
+	ID int `json:"id,string,omitempty"`
 
 	// The section's name.
 	Name string `json:"name,omitempty"`

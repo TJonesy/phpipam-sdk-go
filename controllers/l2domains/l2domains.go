@@ -14,7 +14,7 @@ import (
 // L2Domain represents a PHPIPAM l2domain.
 type L2Domain struct {
 	// The L2 domain ID.
-	ID int `json:"id,omitempty"`
+	ID int `json:"id,string,omitempty"`
 
 	// The L2 domains name.
 	Name string `json:"name,omitempty"`

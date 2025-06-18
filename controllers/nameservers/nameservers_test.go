@@ -39,7 +39,7 @@ const testGetNameserverByIDOutputJSON = `
   "code": 200,
   "success": true,
   "data": {
-    "id": 3,
+    "id": "3",
     "nameSrv1": "8.8.8.8",
     "name": "foolan",
     "description": "google",

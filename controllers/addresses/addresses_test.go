@@ -41,8 +41,8 @@ const testGetAddressByIDOutputJSON = `
   "code": 200,
   "success": true,
   "data": {
-    "id": 11,
-    "subnetId": 3,
+    "id": "11",
+    "subnetId": "3",
     "ip": "10.10.1.10",
     "is_gateway": null,
     "description": "foobar",
@@ -98,8 +98,8 @@ const testGetAddressesByIPOutputJSON = `
   "success": true,
   "data": [
     {
-      "id": 11,
-      "subnetId": 3,
+      "id": "11",
+      "subnetId": "3",
       "ip": "10.10.1.10",
       "is_gateway": null,
       "description": "foobar",
@@ -140,8 +140,8 @@ const testGetAddressesByIpInSubnetOutputJSON = `
   "success": true,
   "data": 
 	{
-		"id": 11,
-		"subnetId": 3,
+		"id": "11",
+		"subnetId": "3",
 		"ip": "10.10.1.10",
 		"is_gateway": null,
 		"description": "foobar",

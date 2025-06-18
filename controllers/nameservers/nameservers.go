@@ -29,7 +29,7 @@ type Nameserver struct {
 	EditDate string `json:"editDate,omitempty"`
 
 	// The subnet ID.
-	ID int `json:"id,omitempty"`
+	ID int `json:"id,string,omitempty"`
 
 	// A map[string]interface{} of custom fields to set on the resource. Note
 	// that this functionality requires PHPIPAM 1.3 or higher with the "Nest
