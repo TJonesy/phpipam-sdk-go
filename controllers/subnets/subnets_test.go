@@ -21,6 +21,7 @@ var testCreateSubnetInput = Subnet{
 	Mask:           24,
 	SectionID:      1,
 	MasterSubnetID: 2,
+	ScanAgent:      0,
 }
 
 const testCreateSubnetOutputExpected = `Subnet created`
@@ -34,6 +35,7 @@ const testCreateSubnetOutputJSON = `
 
 var testCreateFirstFreeSubnetInput = Subnet{
 	Description: "Subnet1",
+	ScanAgent:   0,
 }
 
 const testCreateFirstFreeSubnetOutputExpected = "10.10.4.0/25"
@@ -53,6 +55,7 @@ var testGetSubnetByIDOutputExpected = Subnet{
 	Mask:           24,
 	SectionID:      1,
 	MasterSubnetID: 2,
+	ScanAgent:      0,
 	Nameservers: []nameservers.Nameserver{
 		{
 			ID:          0,
@@ -94,7 +97,7 @@ const testGetSubnetByIDOutputJSON = `
         "description": "a nameserver description",
         "permissions": "1"
     }],
-    "scanAgent": null,
+    "scanAgent": "0",
     "isFolder": 0,
     "isFull": 0,
     "tag": 2,
@@ -205,7 +208,7 @@ const testGetSubnetsByCIDROutputJSON = `
       "DNSrecursive": 0,
       "DNSrecords": 0,
       "nameserverId": "0",
-      "scanAgent": null,
+      "scanAgent": "0",
       "isFolder": 0,
       "isFull": 0,
       "tag": 2,
@@ -473,6 +476,7 @@ const testGetSubnetCustomFieldsSchemaJSON = `
 var testUpdateSubnetInput = Subnet{
 	ID:          8,
 	Description: "foobat",
+	ScanAgent:   0,
 }
 
 const testUpdateSubnetOutputExpected = `Subnet updated`
