@@ -65,7 +65,7 @@ type Subnet struct {
 	AllowRequests phpipam.BoolIntString `json:"allowRequests,omitempty"`
 
 	// The ID of the scan agent to use for the subnet.
-	ScanAgent int `json:"scanAgent,omitempty"`
+	ScanAgent int `json:"scanAgent,string,omitempty"`
 
 	// Controls if the subnet should be included in status checks.
 	PingSubnet phpipam.BoolIntString `json:"pingSubnet,omitempty"`
