@@ -83,7 +83,7 @@ type Subnet struct {
 	IsFull phpipam.BoolIntString `json:"isFull,omitempty"`
 
 	// The threshold of the subnet.
-	Threshold int `json:"threshold,omitempty"`
+	Threshold int `json:"threshold,string,omitempty"`
 
 	// The location index of the subnet.
 	Location int `json:"location,omitempty"`
